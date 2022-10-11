@@ -5,7 +5,7 @@
 
 
 
- <menuitem title="Contacts2" name="contact-root" icon="fa-address-book" left="true" top="true" icon-background="red"/>
+ <menuitem title="Contacts2" name="contact-root2" icon="fa-address-book" left="true" top="true" icon-background="red"/>
 
 
 
