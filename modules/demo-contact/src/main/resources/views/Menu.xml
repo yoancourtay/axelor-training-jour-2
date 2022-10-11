@@ -5,7 +5,16 @@
 
 
 
- <menuitem title="Contacts2" name="contact-root2" icon="fa-address-book" left="true" top="true" icon-background="red"/>
+ <menuitem title="Contacts2" name="contact-root" icon="fa-address-book" left="true" top="false" icon-background="red"/>
+
+ <menuitem title="test3" name="test3-root" icon="" left="true" top="false" icon-background="#00ff00"/>
+ <menuitem name="test2" title="test2" parent="test3-root" action="action-test2"/>
+
+ <action-view name="action-test2" title="Test22" model="com.axelor.contact.db.EmailAddress">
+  <view type="form" name="email-address-form"/>
+  <view type="grid" name="email-address-grid"/>
+</action-view>
+
 
 
 
