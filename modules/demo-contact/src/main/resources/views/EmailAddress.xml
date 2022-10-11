@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<object-views xmlns="http://axelor.com/xml/ns/object-views"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://axelor.com/xml/ns/object-views http://axelor.com/xml/ns/object-views/object-views_5.4.xsd">
+
+
+  <grid model="com.axelor.contact.db.EmailAddress" title="Email addresses" name="email-address-grid"  helpLink="https://www.google.com/" >
+    <toolbar>
+      <button onClick="close" name="close" title="close"/>
+    </toolbar>
+    <field name="email" />
+  </grid>
+
+  <form model="com.axelor.contact.db.EmailAddress" title="Email addresses" canDelete="false"  name="email-address-form" width="large" >
+    <menubar >
+      <menu title="Tools" icon="fa-wrench" name="menuItemEmail">
+        <item action="close" title="close" prompt="Vous allez fermer l'enregistrement" />
+      </menu>
+    </menubar>
+    <help>
+      https://www.google.com/
+    </help>
+
+    <panel name="mainPanel" colSpan="12" >
+      <field name="email" colSpan="6" help="Indiquez une adresse mail" widget="email"/>
+    </panel>
+
+    <panel name="actionPanel" sidebar="true">
+      <button onClick="close" name="btn-close" title="Close" css="btn-warning" icon="fa-sign-out" />
+    </panel>
+
+  </form>
+
+
+
+</object-views>

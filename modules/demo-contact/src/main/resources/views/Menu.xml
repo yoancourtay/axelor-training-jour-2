@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<object-views xmlns="http://axelor.com/xml/ns/object-views"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://axelor.com/xml/ns/object-views http://axelor.com/xml/ns/object-views/object-views_5.4.xsd">
+
+
+
+ <menuitem title="Contacts" name="contact-root" icon="fa-address-book" left="true" top="true" icon-background="blue" order="-100"/>
+
+
+
+
+  <menuitem name="country.all" title="Countries" parent="contact-root" action="action-country-all"/>
+
+  <action-view name="action-country-all" title="Countries" model="com.axelor.contact.db.Country">
+    <view type="form" name="country-form"/>
+    <view type="grid" name="country-grid"/>
+  </action-view>
+
+  <menuitem title="Email Addresses" name="email.all" parent="contact-root" action="action-email-all"/>
+
+  <action-view name="action-email-all" title="Email" model="com.axelor.contact.db.EmailAddress">
+    <view type="grid" name="email-address-grid"/>
+    <view type="form" name="email-address-form"/>
+  </action-view>
+
+ <menuitem title="Address" name="address" icon="fa-bath" parent="contact-root" action="action-address-all"/>
+
+  <action-view name="action-address-all" title="Addresses" model="com.axelor.contact.db.Address">
+    <view type="grid" name="address-grid"/>
+    <view type="form" name="address-form"/>
+    <view-param name="details-view" value="true"/>
+  </action-view>
+
+ <menuitem title="Contacts" name="contact.all"  parent="contact-root" action="action-contact-all"/>
+
+  <action-view name="action-contact-all" title="Contacts" model="com.axelor.contact.db.Contact">
+    <view type="grid" name="contact-grid"/>
+    <view type="form" name="contact-form"/>
+    <view type="cards" name="contact-card" />
+  </action-view>
+
+</object-views>

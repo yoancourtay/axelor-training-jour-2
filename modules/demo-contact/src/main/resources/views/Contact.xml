@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<object-views xmlns="http://axelor.com/xml/ns/object-views"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://axelor.com/xml/ns/object-views http://axelor.com/xml/ns/object-views/object-views_5.4.xsd">
+
+
+      <grid title="Contact" name="contact-grid" model="com.axelor.contact.db.Contact" >
+        <field name="photo" widget="image"/>
+        <field name="title"/>
+        <field name="lastName"/>
+        <field name="firstName"/>
+        <field name="dateOfBirth"/>
+        <field name="emailAddress"/>
+        <field name="phone"/>
+    </grid>
+
+    <form title="Contact" name="contact-form" model="com.axelor.contact.db.Contact" width="large">
+        <panel title="Contact" name="contactPanel" colSpan="12">
+            <field name="photo" widget="image" colSpan="2"/>
+            <field name="$fullName" readonly="false" colSpan="10">
+                <editor>
+                    <field name="title" colSpan="2"/>
+                    <field name="firstName" colSpan="4"/>
+                    <field name="lastName" colSpan="4"/>
+                </editor>
+            </field>
+        </panel>
+        <panel title="Infos" name="infoPanel" colSpan="12">
+            <field name="dateOfBirth" widget="date"/>
+            <field name="emailAddress" canNew="true"/>
+            <field name="phone"/>
+            <field name="addressSet"/>
+        </panel>
+    </form>
+
+    <cards name="contact-card" model="com.axelor.contact.db.Contact" title="Contact">
+      <field name="lastName"/>
+      <field name="firstName"/>
+      <field name="emailAddress"/>
+      <field name="phone"/>
+      <field name="photo" />
+      <template><![CDATA[
+        <div class="span4 card-image">
+          <img ng-if="photo" ng-src="{{$image(null, 'photo')}}">
+          <img ng-if="!photo" src="img/user.png">
+          <strong>{{firstName}}</strong></br>
+          <strong>{{lastName}}</strong>
+        </div>
+        <div class="span6">
+          <strong>{{emailAddress.email}}</strong><br>
+          <div ng-if="phone">Phone: {{phone}}<br></div>
+        </div>
+      ]]>
+      </template>
+
+    </cards>
+
+
+
+</object-views>

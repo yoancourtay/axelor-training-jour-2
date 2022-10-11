@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<object-views xmlns="http://axelor.com/xml/ns/object-views"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://axelor.com/xml/ns/object-views http://axelor.com/xml/ns/object-views/object-views_5.4.xsd">
+
+  <grid model="com.axelor.contact.db.Address" title="Addresses" name="address-grid" groupBy="city">
+    <field name="fullName"/>
+    <field name="street"/>
+    <field name="zip"/>
+    <field name="city"/>
+    <field name="country.name" />
+  </grid>
+
+  <form model="com.axelor.contact.db.Address" title="Address" name="address-form" width="large">
+    <toolbar>
+      <button onClick="action-open-current-record" title="Open" name="btn-open" css="btn-success" colSpan="4"/>
+      <button onClick="save" title="Save" name="btn-save" css="btn-warning" colSpan="4"/>
+      <button onClick="close" title="Close" name="btn-close" css="btn-danger" colSpan="4"/>
+    </toolbar>
+    <panel name="mainPanel" title="Main Panel" colSpan="12" showTitle="false">
+      <panel name="generality" colSpan="12" >
+        <field name="street" colSpan="4" />
+        <field name="id"/>
+        <separator colSpan="12" hidden="true"/>
+        <field name="zip" colSpan="4" />
+        <spacer colSpan="4"/>
+        <field name="city" colSpan="4"/>
+      </panel>
+    </panel>
+    <panel-tabs>
+      <panel name="countryPanel" title="Country Informations" colSpan="12">
+        <field name="country"  form-view="country-simple-form" grid-view="country-simple-grid" colSpan="12" canNew="true" canView="true" />
+      </panel>
+      <panel name="contactPanel" title="contacts">
+        <field name="contactSet" widget="MasterDetail" summary-view="contact-form" form-view="contact-form" grid-view="contact-grid" colSpan="12" />
+      </panel>
+    </panel-tabs>
+  </form>
+
+
+  <action-view name="action-open-current-record" title="Address test" model="com.axelor.contact.db.Address">
+    <view type="form" name="address-form"/>
+    <domain>self.id = :_record</domain>
+    <context name="_record" expr="eval:__this__.id"/>
+  </action-view>
+
+
+</object-views>

@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<domain-models xmlns="http://axelor.com/xml/ns/domain-models"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://axelor.com/xml/ns/domain-models http://axelor.com/xml/ns/domain-models/domain-models_5.4.xsd">
+
+  <module name="contact" package="com.axelor.contact.db"/>
+
+  <entity name="Contact" lang="java">
+
+    <string name="title" title="Title" selection="contact.title.select"/>
+    <string name="lastName" title="Last name"/>
+    <string name="firstName" title="First name"/>
+    <date name="dateOfBirth" title="Date of birth"/>
+    <many-to-one name="emailAddress" title="Email address" ref="com.axelor.contact.db.EmailAddress" />
+    <string name="phone" title="Phone"/>
+    <many-to-many name="addressSet" title="Addresses" ref="com.axelor.contact.db.Address" mappedBy="contactSet" />
+    <many-to-one name="photo" title="Photo" ref="com.axelor.meta.db.MetaFile"/>
+
+    <finder-method name="findByPhone" using="phone"/>
+    <finder-method name="findByLastNameAndFirstName" using="lastName,firstName" all="true"/>
+
+    <extra-code>
+    <![CDATA[
+      public static final String TITLE_MISTER = "M";
+      public static final String TITLE_MISS = "Mrs";
+      public static final String TITLE_DOC = "Dr";
+
+    ]]>
+    </extra-code>
+
+    <entity-listener class="com.axelor.contact.db.listener.ContactListener"/>
+
+  </entity>
+
+</domain-models>
